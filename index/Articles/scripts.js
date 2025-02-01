@@ -9,9 +9,9 @@ const articles = [
         link: "Beyond Code and Cognition_A Multidisciplinary Framework for Autonomous AI in Human-Digital Ecosystems.pdf"
     },
     {
-        title: "Inverse Solution-Oriented Installation Documentation",
+        title: "A Though Experiment on Power Dynamics in a Majority-Rule Chatroom with Unitary Information",
         category: "AI",
-        description: "A Though Experiment on Power Dynamics in a Majority-Rule Chatroom with Unitary Information",
+        description: "This article explores the interaction of entities within a chatroom governed by unitary information and a 2-out-of-3 majority rule for decision-making.",
         type: "PDF",
         provider: "Brendan A.",
         date: "1/5/25",
