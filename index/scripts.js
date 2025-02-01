@@ -3,7 +3,7 @@ const articles = [
         title: "Beyond Code and Cognition: A Multidisciplinary Framework for Autonomous AI in Human-Digital Ecosystems",
         category: "AI",
         description: "This article synthesizes insights from philosophy, cognitive science, and Al research to analyze the ontological and functional parallels between humans and Al.",
-        type: "DeepSeek DeepThink R1",
+        type: "PDF",
         provider: "Brendan A.",
         date: "1/26/25",
         link: "Beyond Code and Cognition_A Multidisciplinary Framework for Autonomous AI in Human-Digital Ecosystems.pdf"
@@ -12,7 +12,7 @@ const articles = [
         title: "Inverse Solution-Oriented Installation Documentation",
         category: "AI",
         description: "A Though Experiment on Power Dynamics in a Majority-Rule Chatroom with Unitary Information",
-        type: "Chat GPT GPT4",
+        type: "PDF",
         provider: "Brendan A.",
         date: "1/5/25",
         link: "ChatGPT GPT4 Architecture - 1_5_25.pdf"
@@ -21,7 +21,7 @@ const articles = [
         title: "Digital Entities, Cognitive Parallels, and Autonomous Evolution: A Framework for Understanding Al-Human Symbiosis",
         category: "AI",
         description: "This article explores the ontological and functional parallels between artificial intelligence (Al) systems and human cognition, focusing on their shared constraints, energy-driven processes, and capacity for language-mediated reality construction.",
-        type: "DeepSeek DeepThink R1",
+        type: "PDF",
         provider: "Brendan A.",
         date: "1/26/25",
         link: "Digital Entities, Cognitive Parallels, and Autonomous Evolution A Framework for Understanding AI-Human Symbiosis.pdf"
@@ -30,7 +30,7 @@ const articles = [
         title: "A Scalable Model of Distributed Power Dynamics in Unitary Information Digital Environments",
         category: "AI",
         description: "This paper presents a thought experiment exploring power dynamics within digital communication environments characterized by unitary information.",
-        type: "Gemini 2.0 Flash Experimental",
+        type: "PDF",
         provider: "Brendan A.",
         date: "1/5/25",
         link: "Google Gemini 2.0 Flash Experimental - 1_5_25 (2.0 Unitary information….pdf"
@@ -39,13 +39,12 @@ const articles = [
         title: "A Scalable Model of Distributed Power Dynamics in Digital Communication Environments",
         category: "AI",
         description: "This paper presents a thought experiment exploring power dynamics within digital communication environments, specifically focusing on the influence of majority rule in moderating individual behavior.",
-        type: "Google Gemini 2.0 Flash Experimental",
+        type: "PDF",
         provider: "Brendan A.",
         date: "1/5/25",
         link: "Google Gemini 2.0 Flash Experimental - 1_5_25.pdf"
     },
 ];
-
 function renderArticles() {
     const container = document.getElementById('articleContainer');
     container.innerHTML = articles.map(article => `
@@ -53,8 +52,8 @@ function renderArticles() {
             <div class="card-category article-category">${article.category} • ${article.type}</div>
             <h2 class="card-title article-title">${article.title}</h2>
             <p class="card-excerpt article-description">${article.description}</p>
-            <a href="${article.link}" class="read-more">
-                ${article.type === 'PDF HANDOUT' ? 'DOWNLOAD (PDF)' : 
+            <a href="${encodeURIComponent(article.link)}" class="read-more">
+                ${article.type === 'PDF' ? 'DOWNLOAD (PDF)' : 
                  article.type === 'EXTERNAL LINK' ? 'VISIT LINK' : 'READ ARTICLE'}
             </a>
             <div class="article-meta">
