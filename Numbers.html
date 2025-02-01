@@ -31,9 +31,9 @@
             text-rendering: optimizeLegibility;
         }
 
-        @keyframes pulse {
+        /* @keyframes pulse {
             from { opacity: 0.3; }
-            to { opacity: 1; }
+            to { opacity: 1; }*/
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -65,7 +65,7 @@
             const items = document.getElementsByClassName('grid-item');
             Array.from(items).forEach(item => {
                 const value = Math.floor(Math.random() * 10);
-                const opacity = 0.05 + (value * 0.085);
+                const opacity = 0 + (value * 0.085);
                 item.textContent = value;
                 item.style.opacity = opacity;
             });
