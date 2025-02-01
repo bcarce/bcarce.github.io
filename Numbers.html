@@ -27,12 +27,12 @@
             justify-content: center;
             font-size: 16px;
             font-weight: 700;
-            animation: pulse 2s ease-in-out infinite alternate;
+            animation: none; /* Disable the default animation ------> "animation: pulse 10s ease-in-out infinite alternate"*/
             text-rendering: optimizeLegibility;
         }
 
         @keyframes pulse {
-            from { opacity: 0.8; }
+            from { opacity: 0.3; }
             to { opacity: 1; }
         }
     </style>
@@ -65,7 +65,7 @@
             const items = document.getElementsByClassName('grid-item');
             Array.from(items).forEach(item => {
                 const value = Math.floor(Math.random() * 10);
-                const opacity = 0.15 + (value * 0.085);
+                const opacity = 0.05 + (value * 0.085);
                 item.textContent = value;
                 item.style.opacity = opacity;
             });
