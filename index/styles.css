@@ -68,7 +68,7 @@ body {
 }
 
 .article-meta {
-    color: var(--light-gray);
+    color: var(--medium-gray);
     font-family: var(--font-secondary);
     font-size: 0.9rem;
     margin-bottom: 1rem;
@@ -84,7 +84,7 @@ body {
 }
 
 .article-excerpt {
-    color: var(--light-gray);
+    color: var(--medium-gray);
     font-family: var(--font-secondary);
     font-size: 1.1rem;
     margin-bottom: 2rem;
