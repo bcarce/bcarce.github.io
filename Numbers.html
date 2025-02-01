@@ -65,7 +65,7 @@
             const items = document.getElementsByClassName('grid-item');
             Array.from(items).forEach(item => {
                 const value = Math.floor(Math.random() * 10);
-                const opacity = 0 + (value * 0.085);
+                const opacity = 0.01 + (value * 0.085);
                 item.textContent = value;
                 item.style.opacity = opacity;
             });
@@ -76,7 +76,7 @@
         updateValues();
         
         // Update values every 75ms
-        setInterval(updateValues, 1000);
+        setInterval(updateValues, 100);
 
         window.addEventListener('resize', () => {
             createGrid();

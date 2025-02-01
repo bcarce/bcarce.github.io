@@ -2,33 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Beyond Code and Cognition_A Multidisciplinary Framework for Autonomous AI in Human-Digital Ecosystems</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .pdf-container {
-            text-align: center;
-            margin: 20px;
-        }
-        .pdf-viewer {
-            width: 100%;
-            height: 600px;
-            border: 1px solid #ccc;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Library</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <AI>
-    </header>
-    <main>
-        <div class="pdf-container">
-            <embed src="bcarce.github.io/Beyond Code and Cognition_A Multidisciplinary Framework for Autonomous AI in Human-Digital Ecosystems.pdf" type="application/pdf" class="pdf-viewer">
+    <header class="navbar">
+        <a href="#" class="nav-brand">Article Library</a>
+        <div class="nav-links">
+            <a href="#" class="menu-toggle">☰</a>
         </div>
-    </main>
-    <footer>
-        <p>© 2025 The Blog.</p>
-    </footer>
+    </header>
+
+    <div class="container">
+        <div class="library-header">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Q Search..." aria-label="Search Articles">
+            </div>
+            <div class="filters">
+                <select id="sortSelect" class="filter-btn" aria-label="Sort Articles">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                </select>
+                <button class="filter-btn active" data-category="all">All</button>
+                <button class="filter-btn" data-category="AI">AI</button>
+                <button class="filter-btn" data-category="Finance">Finance</button>
+                <button class="filter-btn" data-category="News">News</button>
+                <button class="filter-btn" data-category="Other">Other</button>
+            </div>
+        </div>
+        
+        <div class="article-grid blog-grid" id="articleContainer" aria-live="polite">
+            <!-- Articles will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
