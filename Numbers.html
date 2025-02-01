@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Matrix Grid</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #000;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .grid-container {
+            display: grid;
+            width: 100vw;
+            height: 100vh;
+            gap: 1px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .grid-item {
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 700;
+            animation: pulse 2s ease-in-out infinite alternate;
+            text-rendering: optimizeLegibility;
+        }
+
+        @keyframes pulse {
+            from { opacity: 0.8; }
+            to { opacity: 1; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="grid-container" id="grid"></div>
+
+    <script>
+        const grid = document.getElementById('grid');
+        let cols = 0, rows = 0;
+        
+        function createGrid() {
+            const cellSize = 40;
+            cols = Math.floor(window.innerWidth / cellSize);
+            rows = Math.floor(window.innerHeight / cellSize);
+            
+            grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+            grid.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+            
+            grid.innerHTML = '';
+            for(let i = 0; i < cols * rows; i++) {
+                const item = document.createElement('div');
+                item.className = 'grid-item';
+                grid.appendChild(item);
+            }
+        }
+
+        function updateValues() {
+            const items = document.getElementsByClassName('grid-item');
+            Array.from(items).forEach(item => {
+                const value = Math.floor(Math.random() * 10);
+                const opacity = 0.15 + (value * 0.085);
+                item.textContent = value;
+                item.style.opacity = opacity;
+            });
+        }
+
+        // Initial setup
+        createGrid();
+        updateValues();
+        
+        // Update values every 75ms
+        setInterval(updateValues, 75);
+
+        window.addEventListener('resize', () => {
+            createGrid();
+            updateValues();
+        });
+    </script>
+</body>
+</html>
