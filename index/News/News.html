@@ -1,1 +1,82 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/" class="nav-brand">The Blog.</a>
+        <div class="nav-links">
+            <a href="/index/Articles/Articles.html">Articles</a>
+            <a href="/index/News/News.html">News</a>
+            <a href="/index/Projects">Projects</a>
+            <a href="/index/Finance">Finance</a>
+            <a href="/index/Contact">Contact</a>
+            <a href="/Numbers">Numbers</a>
+        </div>
+        <div class="menu-toggle">☰</div>
+    </nav>
+    <body>
+        <h1>Latest News</h1>
+        <div class="category-buttons">
+            <button onclick="updateCategory('general')">General</button>
+            <button onclick="updateCategory('business')">Business</button>
+            <button onclick="updateCategory('technology')">Technology</button>
+            <button onclick="updateCategory('sports')">Sports</button>
+            <button onclick="updateCategory('entertainment')">Entertainment</button>
+        </div>
+        <div id="news-container"></div>
+    
+        <script>
+            let apiKey;
+    
+            async function fetchApiKey() {
+                const response = await fetch('api-key.json');
+                const data = await response.json();
+                apiKey = data.apiKey;
+            }
+    
+            async function fetchNews(category) {
+                const response = await fetch(`https://newsapi.org/v2/top-headlines?category=${category}&country=us&apiKey=${apiKey}`);
+                const data = await response.json();
+                return data.articles;
+            }
+    
+            async function displayNews() {
+                const newsContainer = document.getElementById('news-container');
+                newsContainer.innerHTML = ''; // Clear current news articles
+                const articles = await fetchNews(currentCategory);
+    
+                articles.forEach(article => {
+                    const articleElement = document.createElement('div');
+                    articleElement.className = 'news-article';
+    
+                    const titleElement = document.createElement('h2');
+                    titleElement.textContent = article.title;
+                    articleElement.appendChild(titleElement);
+    
+                    const descriptionElement = document.createElement('p');
+                    descriptionElement.textContent = article.description;
+                    articleElement.appendChild(descriptionElement);
+    
+                    newsContainer.appendChild(articleElement);
+                });
+            }
+    
+            function updateCategory(category) {
+                currentCategory = category;
+                displayNews();
+            }
+    
+            // Auto-update every 3 seconds
+            setInterval(displayNews, 3000);
+    
+            // Load initial news
+            let currentCategory = 'general';
+            fetchApiKey().then(() => displayNews());
+        </script>
+    </body>
