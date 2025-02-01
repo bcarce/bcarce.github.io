@@ -6,7 +6,7 @@ const articles = [
         type: "DeepSeek DeepThink R1",
         provider: "Brendan A.",
         date: "1/26/25",
-        link: "Articles/Beyond Code and Cognition_A Multidisciplinary Framework for Autonomous AI in Human-Digital Ecosystems.pdf"
+        link: "Beyond Code and Cognition_A Multidisciplinary Framework for Autonomous AI in Human-Digital Ecosystems.pdf"
     },
     {
         title: "Inverse Solution-Oriented Installation Documentation",
@@ -15,7 +15,7 @@ const articles = [
         type: "Chat GPT GPT4",
         provider: "Brendan A.",
         date: "1/5/25",
-        link: "Articles/ChatGPT GPT4 Architecture - 1_5_25.pdf"
+        link: "ChatGPT GPT4 Architecture - 1_5_25.pdf"
     },
     {
         title: "Digital Entities, Cognitive Parallels, and Autonomous Evolution: A Framework for Understanding Al-Human Symbiosis",
@@ -24,7 +24,7 @@ const articles = [
         type: "DeepSeek DeepThink R1",
         provider: "Brendan A.",
         date: "1/26/25",
-        link: "Articles/Digital Entities, Cognitive Parallels, and Autonomous Evolution A Framework for Understanding AI-Human Symbiosis.pdf"
+        link: "Digital Entities, Cognitive Parallels, and Autonomous Evolution A Framework for Understanding AI-Human Symbiosis.pdf"
     },
     {
         title: "A Scalable Model of Distributed Power Dynamics in Unitary Information Digital Environments",
@@ -33,7 +33,7 @@ const articles = [
         type: "Gemini 2.0 Flash Experimental",
         provider: "Brendan A.",
         date: "1/5/25",
-        link: "Articles/Google Gemini 2.0 Flash Experimental - 1_5_25 (2.0 Unitary information….pdf"
+        link: "Google Gemini 2.0 Flash Experimental - 1_5_25 (2.0 Unitary information….pdf"
     },
     {
         title: "A Scalable Model of Distributed Power Dynamics in Digital Communication Environments",
@@ -42,7 +42,7 @@ const articles = [
         type: "Google Gemini 2.0 Flash Experimental",
         provider: "Brendan A.",
         date: "1/5/25",
-        link: "Articles/Google Gemini 2.0 Flash Experimental - 1_5_25.pdf"
+        link: "Google Gemini 2.0 Flash Experimental - 1_5_25.pdf"
     },
 ];
 
