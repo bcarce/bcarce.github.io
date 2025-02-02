@@ -80,22 +80,6 @@ text-decoration: none;
 color: #000;
 }
 
-/* Responsive styles */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-    .menu {
-        display: none;
-        flex-direction: column;
-    }
-    .menu ul {
-        flex-direction: column;
-    }
-    .menu ul li {
-        margin-bottom: 10px;
-    }
-}
 
 /* Main Content Container */
 .container {
