@@ -4,86 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News</title>
-    <style> /* If styles.css not available */
-        /* Updated CSS Variables */
-        :root {
-            --dark-gray: #2B2D42;
-            --medium-gray: #4A4E69;
-            --light-gray: #EDF2F4;
-            --accent: #EF233C;
-            --font-primary: 'Poppins', sans-serif;
-            --font-secondary: 'Open Sans', sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: var(--font-primary);
-        }
-
-        body {
-            background-color: #FFFFFF;
-            color: var(--dark-gray);
-            line-height: 1.7;
-        }
-
-        /* Navigation */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 5%;
-            background-color: white;
-            border-bottom: 2px solid var(--light-gray);
-            position: relative;
-        }
-
-        .nav-brand {
-            font-weight: 700;
-            font-size: 1.8rem;
-            color: var(--dark-gray);
-            text-decoration: none;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--medium-gray);
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-            font-size: 0.95rem;
-        }
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .featured-article {
-                padding: 2rem;
-            }
-
-            .article-title {
-                font-size: 1.8rem;
-            }
-
-            .article-excerpt {
-                max-width: 100%;
-                font-size: 1rem;
-            }
-
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style> 
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -119,52 +40,6 @@
     </div>
     <div id="news-container"></div>
 
-    <script>
-        let apiKey;
-
-        async function fetchApiKey() {
-            const response = await fetch('api-key.json');
-            const data = await response.json();
-            apiKey = data.apiKey;
-        }
-
-        async function fetchNews(category) {
-            const response = await fetch(`https://newsapi.org/v2/top-headlines?category=${category}&country=us&apiKey=${apiKey}`);
-            const data = await response.json();
-            return data.articles;
-        }
-
-        async function displayNews() {
-            const newsContainer = document.getElementById('news-container');
-            newsContainer.innerHTML = ''; // Clear current news articles
-            const articles = await fetchNews(currentCategory);
-
-            articles.forEach(article => {
-                const articleElement = document.createElement('div');
-                articleElement.className = 'news-article';
-
-                const titleElement = document.createElement('h2');
-                titleElement.textContent = article.title;
-                articleElement.appendChild(titleElement);
-
-                const descriptionElement = document.createElement('p');
-                descriptionElement.textContent = article.description;
-                articleElement.appendChild(descriptionElement);
-
-                newsContainer.appendChild(articleElement);
-            });
-        }
-
-        function updateCategory(category) {
-            currentCategory = category;
-            displayNews();
-        }
-
-        // Auto-update every 3 seconds
-        setInterval(displayNews, 3000);
-
-        // Load initial news
-        let currentCategory = 'general';
-        fetchApiKey().then(() => displayNews());
-    </script>
+    <script src="scripts.js"></script>
 </body>
+<html>
