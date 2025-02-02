@@ -1,0 +1,211 @@
+/* Updated CSS Variables */
+:root {
+    --dark-gray: #2B2D42;
+    --medium-gray: #4A4E69;
+    --light-gray: #EDF2F4;
+    --accent: #EF233C;
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Open Sans', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-primary);
+}
+
+body {
+    background-color: #FFFFFF;
+    color: var(--dark-gray);
+    line-height: 1.7;
+}
+
+/* Navigation */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 5%;
+    background-color: white;
+    border-bottom: 2px solid var(--light-gray);
+    position: relative;
+}
+
+.nav-brand {
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--dark-gray);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--medium-gray);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    font-size: 0.95rem;
+}/* Nav Bar Hanburger dropdown Fix*/ 
+.menu-toggle {
+display: none;
+font-size: 24px;
+cursor: pointer;
+padding: 10px;
+}
+
+.menu {
+display: flex;
+}
+
+.menu ul {
+list-style: none;
+padding: 0;
+margin: 0;
+display: flex;
+}
+
+.menu ul li {
+margin-right: 20px;
+}
+
+.menu ul li a {
+text-decoration: none;
+color: #000;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    .menu {
+        display: none;
+        flex-direction: column;
+    }
+    .menu ul {
+        flex-direction: column;
+    }
+    .menu ul li {
+        margin-bottom: 10px;
+    }
+}
+
+/* Main Content Container */
+.container {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+
+/* Featured Article */
+.featured-article {
+    background: var(--dark-gray);
+    color: white;
+    padding: 3rem;
+    border-radius: 12px;
+    margin-bottom: 4rem;
+    transition: transform 0.3s ease;
+}
+
+.article-meta {
+    color: var(--light-gray);
+    font-family: var(--font-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.article-title {
+    font-size: 2.4rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+    font-weight: 600;
+}
+
+.article-excerpt {
+    color: var(--light-gray);
+    font-family: var(--font-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 80%;
+}
+
+/* Blog Grid Layout */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.blog-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.card-category {
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.card-title {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.card-excerpt {
+    color: var(--medium-gray);
+    font-family: var(--font-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.card-date {
+    color: var(--medium-gray);
+    font-size: 0.85rem;
+    font-family: var(--font-secondary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .featured-article {
+        padding: 2rem;
+    }
+
+    .article-title {
+        font-size: 1.8rem;
+    }
+
+    .article-excerpt {
+        max-width: 100%;
+        font-size: 1rem;
+    }
+
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+}

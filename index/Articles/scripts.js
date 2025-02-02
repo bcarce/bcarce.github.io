@@ -125,6 +125,14 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = 'translateY(0)';
         });
     });
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+        const menu = document.querySelector('.menu');
+        if (menu.style.display === 'flex') {
+            menu.style.display = 'none';
+        } else {
+            menu.style.display = 'flex';
+        }
+    });
 });
 
 renderArticles();

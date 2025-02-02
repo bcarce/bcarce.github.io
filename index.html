@@ -59,6 +59,49 @@
             transition: all 0.3s ease;
             position: relative;
             font-size: 0.95rem;
+        }/* Nav Bar Hanburger dropdown Fix*/ 
+        .menu-toggle {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 10px;
+        }
+
+        .menu {
+        display: flex;
+        }
+
+        .menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        }
+
+        .menu ul li {
+        margin-right: 20px;
+        }
+
+        .menu ul li a {
+        text-decoration: none;
+        color: #000;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .menu {
+                display: none;
+                flex-direction: column;
+            }
+            .menu ul {
+                flex-direction: column;
+            }
+            .menu ul li {
+                margin-bottom: 10px;
+            }
         }
 
         /* Main Content Container */
@@ -173,6 +216,7 @@
                 grid-template-columns: 1fr;
             }
         }
+
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -182,12 +226,22 @@
         <div class="nav-links">
             <a href="/index/Articles/Articles.html">Articles</a>
             <a href="/index/News/News.html">News</a>
-            <a href="/index/Projects">Projects</a>
-            <a href="/index/Finance">Finance</a>
-            <a href="/index/Contact">Contact</a>
+            <a href="/index/Projects/Projects.html">Projects</a>
+            <a href="/index/Finance/Finance.html">Finance</a>
+            <a href="/index/Contact/Contact.html">Contact</a>
             <a href="Numbers.html">Numbers</a>
         </div>
         <div class="menu-toggle">☰</div>
+        <nav class="menu">
+            <ul>
+                <li><a href="/index/Articles/Articles.html">Articles</a></li>
+                <li><a href="/index/News/News.html">News</a></li>
+                <li><a href="/index/Projects/Projects.html">Projects</a></li>
+                <li><a href="/index/Finance/Finance.html">Finance</a></li>
+                <li><a href="/index/Contact/Contact.html">Contact</a></li>
+                <li><a href="/index/Projects/Numbers.html">Numbers</a></li>
+            </ul>
+        </nav>
     </nav>
 
     <div class="container">
@@ -196,7 +250,7 @@
             <div class="article-meta">AI</div>
             <h1 class="article-title">DeepSeek - Into the Unknown: Intro</h1>
             <p class="article-excerpt">A test case showcasing the first conversation log with DeepSeek Deepthink R1. This conversation utilizes non-technical prompts to document the process and outcome of the AI thought process. Additional testing has been applied to ChatGPT 4o, Gemini 2.0 experimental, and more to come.</p>
-            <a href="DeepSeek - Into the Unknown.html" class="read-more" style="color: var(--accent);">Read more →</a>
+            <a href="index/Projects/DeepSeek - Into the Unknown.html" class="read-more" style="color: var(--accent);">Read more →</a>
         </article>
 
         <!-- Blog Grid -->
@@ -226,15 +280,24 @@
     </div>
 
     <script>
-        // Mobile Menu Functionality
-        document.addEventListener('DOMContentLoaded', function() {
+        //Hamburger navdropdown menu functionality
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            const menu = document.querySelector('.menu');
+            if (menu.style.display === 'flex') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'flex';
+            }
+            });
+        // Mobile Menu Functionality OLD 
+        /*document.addEventListener('DOMContentLoaded', function() {
             const menuToggle = document.querySelector('.menu-toggle');
             const navLinks = document.querySelector('.nav-links');
 
             menuToggle.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
                 menuToggle.textContent = navLinks.classList.contains('active') ? '×' : '☰';
-            });
+            }); */
 
             // Smooth Scroll for Navigation
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -256,7 +319,6 @@
                     this.style.transform = 'translateY(0)';
                 });
             });
-        });
     </script>
 </body>
 </html>
