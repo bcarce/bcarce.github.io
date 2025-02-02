@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
+    const menu = document.querySelector('.menu');
 
     menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        menuToggle.textContent = navLinks.classList.contains('active') ? '×' : '☰';
+        menu.classList.toggle('active');
+        menu.style.display = menu.classList.contains('active') ? 'flex' : 'none';
+        menuToggle.textContent = menu.classList.contains('active') ? '×' : '☰';
     });
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -24,13 +25,5 @@ document.addEventListener('DOMContentLoaded', function() {
         card.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0)';
         });
-    });
-    document.querySelector('.menu-toggle').addEventListener('click', function() {
-        const menu = document.querySelector('.menu');
-        if (menu.style.display === 'flex') {
-            menu.style.display = 'none';
-        } else {
-            menu.style.display = 'flex';
-        }
     });
 });
