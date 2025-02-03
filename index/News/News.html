@@ -33,11 +33,11 @@
     </nav>
     <h1>Latest News</h1>
     <div class="category-buttons">
-        <button onclick="updateCategory('general')">General</button>
-        <button onclick="updateCategory('business')">Business</button>
-        <button onclick="updateCategory('technology')">Technology</button>
-        <button onclick="updateCategory('arts')">Arts</button>
-        <button onclick="updateCategory('society')">Society</button>
+        <button onclick="newsApp.loadCategoryNews('general')">General</button>
+        <button onclick="newsApp.loadCategoryNews('business')">Business</button>
+        <button onclick="newsApp.loadCategoryNews('technology')">Technology</button>
+        <button onclick="newsApp.loadCategoryNews('arts')">Arts</button>
+        <button onclick="newsApp.loadCategoryNews('society')">Society</button>
     </div>
 
     <div id="gk-banner-top">
@@ -62,12 +62,12 @@
     <div id="error-container"></div>
 
     <section id="everything-news">
-        <h2>Everything about Trump</h2>
+        <h2>World News</h2>
         <div class="articles-container"></div>
     </section>
 
     <section id="top-headlines">
-        <h2>Bitcoin Headlines</h2>
+        <h2>Top Headlines</h2>
         <div class="articles-container"></div>
     </section>
 
