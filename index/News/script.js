@@ -28,11 +28,130 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// NewsAPI Client implementation
+class NewsApiClient {
+    constructor(apiKey) {
+        this.apiKey = apiKey;
+        this.baseUrl = 'https://newsapi.org/v2';
+    }
 
+    async getEverything(params) {
+        const url = new URL(`${this.baseUrl}/everything`);
+        Object.entries(params).forEach(([key, value]) => {
+            if (value) url.searchParams.append(key, value);
+        });
+        
+        try {
+            const response = await fetch(url, {
+                headers: { 'X-Api-Key': this.apiKey }
+            });
+            return await response.json();
+        } catch (error) {
+            throw new Error(`Everything request failed: ${error.message}`);
+        }
+    }
+
+    async getTopHeadlines(params) {
+        const url = new URL(`${this.baseUrl}/top-headlines`);
+        Object.entries(params).forEach(([key, value]) => {
+            if (value) url.searchParams.append(key, value);
+        });
+
+        try {
+            const response = await fetch(url, {
+                headers: { 'X-Api-Key': this.apiKey }
+            });
+            return await response.json();
+        } catch (error) {
+            throw new Error(`TopHeadlines request failed: ${error.message}`);
+        }
+    }
+
+    async getSources(params) {
+        const url = new URL(`${this.baseUrl}/top-headlines/sources`);
+        Object.entries(params).forEach(([key, value]) => {
+            if (value) url.searchParams.append(key, value);
+        });
+
+        try {
+            const response = await fetch(url, {
+                headers: { 'X-Api-Key': this.apiKey }
+            });
+            return await response.json();
+        } catch (error) {
+            throw new Error(`Sources request failed: ${error.message}`);
+        }
+    }
+}
+
+// Usage example
+document.addEventListener('DOMContentLoaded', async () => {
+    const apiKey = document.querySelector('meta[name="newsapi-key"]').getAttribute('content');
+    const newsApiClient = new NewsApiClient(apiKey);
+
+    try {
+        // Get everything example
+        const everythingResponse = await newsApiClient.getEverything({
+            q: 'trump',
+            pageSize: 5
+        });
+        renderArticles(everythingResponse.articles, 'everything-news');
+
+        // Get top headlines example
+        const topHeadlinesResponse = await newsApiClient.getTopHeadlines({
+            q: 'bitcoin',
+            language: 'en',
+            pageSize: 5
+        });
+        renderArticles(topHeadlinesResponse.articles, 'top-headlines');
+
+        // Get sources example
+        const sourcesResponse = await newsApiClient.getSources({
+            language: 'en',
+            country: 'us'
+        });
+        renderSources(sourcesResponse.sources);
+    } catch (error) {
+        console.error(error);
+        showError(error.message);
+    }
+});
+
+// Render functions
+function renderArticles(articles, containerId) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = articles.map(article => `
+        <div class="article">
+            <h3><a href="${article.url}" target="_blank">${article.title}</a></h3>
+            ${article.urlToImage ? `<img src="${article.urlToImage}" alt="${article.title}">` : ''}
+            <p>${article.description || ''}</p>
+            <div class="meta">
+                <span>${article.source.name}</span> • 
+                <time>${new Date(article.publishedAt).toLocaleDateString()}</time>
+            </div>
+        </div>
+    `).join('');
+}
+
+function renderSources(sources) {
+    const container = document.getElementById('news-sources');
+    container.innerHTML = sources.map(source => `
+        <div class="source">
+            <h4>${source.name}</h4>
+            <p>${source.description || ''}</p>
+            <a href="${source.url}" target="_blank">Visit Source</a>
+        </div>
+    `).join('');
+}
+
+function showError(message) {
+    const errorContainer = document.getElementById('error-container');
+    errorContainer.innerHTML = `<div class="error">${message}</div>`;
+}
+
+// Category buttons and pagination
 const apiUrlBase = 'https://newsapi.org/v2/everything';
-const pageSize = 5; // Number of articles per page
 let currentPage = 1;
-let totalPages = 1;
 let cache = {};
 let currentQuery = 'latest';
 
@@ -48,7 +167,7 @@ function fetchNews(query = 'latest', page = 1) {
 
     const apiKey = document.querySelector('meta[name="newsapi-key"]').getAttribute('content');
 
-    fetch(`${apiUrlBase}?q=${query}&pageSize=${pageSize}&page=${page}&apiKey=${apiKey}`)
+    fetch(`${apiUrlBase}?q=${query}&pageSize=5&page=${page}&apiKey=${apiKey}`)
     .then(response => response.json())
     .then(data => {
         if (data.articles) {
